@@ -1,5 +1,5 @@
-# problems
-Some algorithms that solve problems
+# Project
+I created this project to solve some interesting algorithm problems that I had to solve (*maybe for some technical interview*) and found it interesting
 
 # How to run tests
 `npm test`
