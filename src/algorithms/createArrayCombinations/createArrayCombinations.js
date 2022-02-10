@@ -1,4 +1,4 @@
-function getCombinations(list) {
+function createArrayCombinations(list) {
   const listCombinations = [[]];
   for (let i = 0; i < list.length; i++) {
     const newCombination = list[i];
@@ -13,4 +13,4 @@ function getCombinations(list) {
   return listCombinations;
 }
 
-module.exports = { getCombinations }
+module.exports = { createArrayCombinations }
