@@ -1,21 +1,16 @@
-const algoritm = require("./algoritm")
-
-function check(list, expected) {
-  const result = algoritm.getCombinations(list)
-  const theyAreEqual = JSON.stringify(expected) === JSON.stringify(result)
-  if (theyAreEqual) {
-    console.log(JSON.stringify(expected))
-    console.log('SUCCESS!!')
-  } else {
-    console.log('Recebido', JSON.stringify(result))
-    console.log('Esperado', JSON.stringify(expected))
-    console.log('They are DIFFERENT')
+function getCombinations(list) {
+  const listCombinations = [[]];
+  for (let i = 0; i < list.length; i++) {
+    const newCombination = list[i];
+    listCombinations.push([ newCombination ]);
+    
+    const endIndexNewList = listCombinations.length - 1
+    for (let iNewList = 1; iNewList < endIndexNewList; iNewList++) {
+      const combination = listCombinations[iNewList];
+      listCombinations.push([...combination, newCombination]);
+    }
   }
-  console.log('----------------------------------------------------------')
+  return listCombinations;
 }
 
-check([0], [[], [0]])
-
-check([1, 2, 3], [[], [1], [2], [1, 2], [3], [1, 3], [2, 3], [1, 2, 3]])
-
-check([1, 2, 3, 4], [[], [1], [2], [1, 2], [3], [1, 3], [2, 3], [1, 2, 3], [4], [1, 4], [2, 4], [1, 2, 4], [3, 4], [1, 3, 4], [2, 3, 4], [1, 2, 3, 4]])
+module.exports = { getCombinations }
